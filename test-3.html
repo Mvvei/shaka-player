@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Parcel Sandbox</title>
+  <meta charset="UTF-8" />
+
+  <style>
+    .cmprotect {
+      position: relative;
+      display: inline-block;
+    }
+
+    .cmprotect :nth-child(1) {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cmprotect :nth-child(2) {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <h2>Basic Example of Embedding Player</h2>
+  </div>
+  <div class="cmprotect">
+    <iframe
+      src="https://player.vdocipher.com/v2/?otp=20160313versUSE323s1op5IMdmUOgglkFEuXE1c6ULJjpqDY82QLHS5hqzpjQRH&playbackInfo=eyJ2aWRlb0lkIjoiMzlhM2RmZDI3ZWY0NDhkYTgxYTdkNDk1NjkxMjNhNGUifQ==&player=xRM4bBRibFvYzs9C"
+      style="border:0;height:360px;width:640px;max-width:100%"
+      disallow="fullscreen"
+      allow="encrypted-media; autoplay; muted"></iframe>
+
+    <!-- <img src="./2.png" > -->
+
+  </div>
+  <script src="https://player.vdocipher.com/v2/api.js"></script>
+  <script>
+    const iframe = document.querySelector('iframe');
+    const player = VdoPlayer.getInstance(iframe);
+
+    const pauseHandler = () => {
+      console.log('Video is Loadeds');
+      player.video.play().then(console.log('played')).catch(console.log('not played'));
+    };
+
+    // attaching event listener.
+    player.video.addEventListener('loadeddata', pauseHandler);
+  </script>
+</body>
+
+</html>
