@@ -2,11 +2,31 @@
 <html lang="en">
 
 <body>
+
   <!-- Include the Shaka Player js and css. -->
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/shaka-player/4.5.0/shaka-player.compiled.debug.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<!-- 
+  <script type="text/javascript" src="dist/demo.compiled.js"></script>
+  <script type="text/javascript" src="dist/shaka-player.compiled.js"></script> -->
 
   <!-- Here is the video element that we will connect the Shaka Player to. -->
-  <video id="drm-demo" style="width: 100%" controls muted></video>
+  <video id="drm-demo" style="width: 50%; height: 20%; object-fit: fill; opacity: 1" controls muted ></video>
+
+
+  <button id="jump">Jump to 7</button>
+
+  <button id="move"> move video tag</button>
+  <div id="newdiv" style="border: 2px solid;"></div>
+
+  <script>
+    $(function() {
+      $("#move").click(() => {
+        $("#drm-demo").appendTo("#newdiv");
+        $("#drm-demo").css("opacity", "1");
+      })
+    })
+  </script>
 
   <script>
     // These values are pulled from the Axinom GitHub page above.
@@ -79,6 +99,20 @@
 
     document.addEventListener('DOMContentLoaded', initApp);
   </script>
+
+<script>
+  var myvideo = document.getElementById('drm-demo'),
+  playbutton = document.getElementById('playme'),
+  jumplink = document.getElementById('jump');
+
+jumplink.addEventListener("click", function (event) {
+  // event.preventDefault();
+  // myvideo.play();
+  // myvideo.pause();
+  myvideo.currentTime = 30;
+  myvideo.pause();
+});
+</script>
 
 </body>
 
